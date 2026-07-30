@@ -1,0 +1,56 @@
+{
+  "name": "lita-print-agent",
+  "version": "1.0.0",
+  "description": "Windows print agent for Lita Pro",
+  "main": "src/main.js",
+  "author": "Logivec",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "build:win": "electron-builder --win --x64",
+    "build:installer": "electron-builder --win nsis --x64",
+    "build:portable": "electron-builder --win portable --x64"
+  },
+  "dependencies": {
+    "electron-store": "10.1.0"
+  },
+  "devDependencies": {
+    "electron": "43.2.0",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "com.logivec.litaprintagent",
+    "productName": "Lita Print Agent",
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Lita Print Agent",
+      "runAfterFinish": true
+    }
+  }
+}

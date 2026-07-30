@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';"
+  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lita Print Agent</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div>
+        <span class="eyebrow">LOGIVEC</span>
+        <h1>Lita Print Agent</h1>
+        <p>Connect Lita Pro to Windows receipt and kitchen printers.</p>
+      </div>
+      <div id="statusBadge" class="status">Checking…</div>
+    </header>
+
+    <section class="card status-card">
+      <div>
+        <span class="label">Local API</span>
+        <strong id="apiUrl">Loading…</strong>
+      </div>
+      <button id="refreshButton" type="button">Refresh printers</button>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Agent settings</h2>
+
+        <label>
+          Host
+          <input id="host" type="text" value="127.0.0.1">
+        </label>
+
+        <label>
+          Port
+          <input id="port" type="number" min="1024" max="65535" value="19100">
+        </label>
+
+        <label>
+          Receipt printer
+          <select id="receiptPrinter"></select>
+        </label>
+
+        <label>
+          Kitchen printer
+          <select id="kitchenPrinter"></select>
+        </label>
+
+        <label>
+          Raw shared-printer path
+          <input id="rawPrinterPath" type="text" placeholder="\\localhost\POS58">
+        </label>
+
+        <button id="saveButton" class="primary" type="button">Save settings</button>
+        <p class="hint">Restart the application after changing the host or port.</p>
+      </article>
+
+      <article class="card">
+        <h2>Printer test</h2>
+
+        <label>
+          Printer
+          <select id="testPrinter"></select>
+        </label>
+
+        <label>
+          Test text
+          <textarea id="testText" rows="10">LITA PRINT AGENT
+Printer test successful.
+
+Thank you.
+
+</textarea>
+        </label>
+
+        <button id="testButton" class="primary" type="button">Print test</button>
+        <pre id="message"></pre>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Installed printers</h2>
+      <div id="printerList" class="printer-list"></div>
+    </section>
+  </main>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

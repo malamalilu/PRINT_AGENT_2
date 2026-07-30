@@ -1,0 +1,1 @@
+Run `npm install` once and commit package-lock.json before using the GitHub Actions workflow.
